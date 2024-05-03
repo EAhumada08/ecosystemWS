@@ -1,0 +1,13 @@
+http://localhost:1234/clients/?user=Emanuel&&pass=1234
+
+####
+
+POST http://localhost:1234/clients
+Content-Type: application/json
+
+{
+    "name": "Ester", 
+    "email": "ester@gmail.com", 
+    "password": "1222432", 
+    "tel": "4811461872" 
+}
