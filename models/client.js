@@ -15,7 +15,7 @@ export class ClientModel {
     if (user && pass) {
       const [client] = await run.query('SELECT * FROM clients where email = ? && password = ?',
         [user, pass])
-
+      console.log(client)
       if ([client].length === 0) return null
       return client[0]
     }

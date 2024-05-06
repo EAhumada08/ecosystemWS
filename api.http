@@ -1,13 +1,22 @@
 http://localhost:1234/clients/?user=Emanuel&&pass=1234
 
 ####
+POST http://localhost:1234/clients/login
+Content-Type: application/json
+
+{
+    "user": "ester@gmail.com", 
+    "pass": "1222432"
+}
+
+####
 
 POST http://localhost:1234/clients
 Content-Type: application/json
 
 {
     "name": "Ester", 
-    "email": "ester@gmail.com", 
-    "password": "1222432", 
-    "tel": "4811461872" 
+    "email": "ester@gmail", 
+    "password": "1222", 
+    "tel": "a" 
 }

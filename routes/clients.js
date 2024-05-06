@@ -3,6 +3,10 @@ import { ClientController } from '../controllers/clients.js'
 
 export const clientsRouter = Router()
 
-clientsRouter.get('/', ClientController.validate)
+clientsRouter.post('/login', ClientController.validate)
 
 clientsRouter.post('/', ClientController.create)
+
+clientsRouter.get('/rutas', (req, res) => {
+
+})
