@@ -1,5 +1,8 @@
 http://localhost:1234/clients/?user=Emanuel&&pass=1234
-
+####
+http://localhost:1234/clients/1
+####
+http://localhost:1234/clients/rutas
 ####
 POST http://localhost:1234/clients/login
 Content-Type: application/json
@@ -19,4 +22,23 @@ Content-Type: application/json
     "email": "ester@gmail", 
     "password": "1222", 
     "tel": "a" 
+}
+
+####
+PATCH http://localhost:1234/clients/1
+Content-Type: application/json
+
+{
+    "firstname": "Emanuel",
+    "lastname": "Ahumada",
+    "email": "emaahmc08@gmail.com",
+    "pass": "134",
+    "calle": "Horacio Sanchez",
+    "extN": "22",
+    "intN": "12",
+    "tel": "123214124",
+    "col": "Solidaridad",
+    "cp": "79020",
+    "state": "San Luis Potosí",
+    "city": "Ciudad Valles"
 }
