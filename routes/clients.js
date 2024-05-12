@@ -20,8 +20,7 @@ clientsRouter.get('/rutas', (req, res) => {
     .geocode({
 
       params: {
-        place_id: 'ChIJfVFHrM0LkkYRBzUQos_jR5w',
-        key: 'AIzaSyD08LlcQlumu8y94r8e7Cu5pt9V4iwFQnI'
+        place_id: 'ChIJfVFHrM0LkkYRBzUQos_jR5w'
       },
       timeout: 1000 // milliseconds
     })
