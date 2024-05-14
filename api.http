@@ -1,8 +1,9 @@
 http://localhost:1234/clients/?user=Emanuel&&pass=1234
 ####
-http://localhost:1234/clients/1
+http://localhost:1234/
 ####
-http://localhost:1234/clients/rutas
+http://localhost:1234/clients/maps
+
 ####
 POST http://localhost:1234/clients/login
 Content-Type: application/json
@@ -41,4 +42,22 @@ Content-Type: application/json
     "cp": "79020",
     "state": "San Luis Potosí",
     "city": "Ciudad Valles"
+}
+
+####
+POST http://localhost:1234/desechos
+Content-Type: application/json
+
+{
+    "idClient": "1",
+    "data": {
+        "color": "Rojo",
+        "numSerie": "353",
+        "name": "Teclado",
+        "marca": "Logi",
+        "model": "3e3",
+        "peso": "12.6",
+        "date": "2024-05-06",
+        "estado": "No sirve"
+    }
 }
