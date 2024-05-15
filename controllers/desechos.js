@@ -6,5 +6,7 @@ export class DesechoController {
     const { data } = req.body
 
     const newDesecho = await DesechoModel.create({ idClient, input: data })
+
+    res.json(newDesecho)
   }
 }

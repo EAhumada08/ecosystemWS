@@ -32,4 +32,12 @@ export class ClientController {
 
     return res.json(updateClient)
   }
+
+  static async getDesechos (req, res) {
+    const { id } = req.params
+
+    const desechos = await ClientModel.getDesechos({ id })
+
+    res.json(desechos)
+  }
 }

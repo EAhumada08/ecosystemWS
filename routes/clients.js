@@ -10,3 +10,5 @@ clientsRouter.post('/', ClientController.create)
 clientsRouter.get('/:id', ClientController.getById)
 
 clientsRouter.patch('/:id', ClientController.update)
+
+clientsRouter.get('/desechos/:id', ClientController.getDesechos)

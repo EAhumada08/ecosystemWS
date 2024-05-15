@@ -1,6 +1,7 @@
 import express, { json } from 'express'
 import { clientsRouter } from './routes/clients.js'
 import { desechosRouter } from './routes/desechos.js'
+import { recolectorRouter } from './routes/recolectores.js'
 import { corsMiddleware } from './middlewares/cors.js'
 
 const app = express()
@@ -16,6 +17,8 @@ app.get('/', (req, res) => {
 app.use('/clients', clientsRouter)
 
 app.use('/desechos', desechosRouter)
+
+app.use('/recolectores', recolectorRouter)
 
 const PORT = process.env.PORT ?? 1234
 

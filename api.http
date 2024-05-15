@@ -9,8 +9,8 @@ POST http://localhost:1234/clients/login
 Content-Type: application/json
 
 {
-    "user": "ester@gmail.com", 
-    "pass": "1222432"
+    "user": "emaahmc08@gmail.com", 
+    "pass": "12345"
 }
 
 ####
@@ -45,6 +45,9 @@ Content-Type: application/json
 }
 
 ####
+GET http://localhost:1234/clients/desechos/1
+
+####
 POST http://localhost:1234/desechos
 Content-Type: application/json
 
@@ -52,7 +55,7 @@ Content-Type: application/json
     "idClient": "1",
     "data": {
         "color": "Rojo",
-        "numSerie": "353",
+        "numSerie": "358",
         "name": "Teclado",
         "marca": "Logi",
         "model": "3e3",
@@ -60,4 +63,26 @@ Content-Type: application/json
         "date": "2024-05-06",
         "estado": "No sirve"
     }
+}
+
+####
+POST http://localhost:1234/recolectores
+Content-Type: application/json
+
+{
+    "claveTrabajador": "345",
+    "responsable": "Emanuel Ahumada",
+    "firstname": "Carlos",
+    "lastname": "Perez",
+    "email": "e@gmail.com",
+    "pass": "1234",
+    "confirm": "1234",
+    "tel": "4811231234",
+    "calle": "Horacio Sanchez",
+    "extN": "22",
+    "intN": "1",
+    "col": "Solidaridad",
+    "cp": "1234",
+    "state": "San Luis Potosí",
+    "city": "Ciudad Valles"
 }

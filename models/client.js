@@ -12,7 +12,7 @@ const run = await mysql.createConnection(config)
 
 export class ClientModel {
   static async getByID ({ id }) {
-    const [client] = await run.query('SELECT firstname,lastname,email,pass,tel,calle,extN,intN,col,cp,city,state from clients WHERE id = ?; ',
+    const [client] = await run.query('SELECT firstname,lastname,email,pass,tel,calle,extN,intN,col,cp,city,state from users WHERE id = ?; ',
       [id]
     )
 
@@ -23,7 +23,7 @@ export class ClientModel {
 
   static async validate ({ user, pass }) {
     if (user && pass) {
-      const [client] = await run.query('SELECT id FROM clients where email = ? && pass = ?',
+      const [client] = await run.query('SELECT id, rol FROM users where email = ? && pass = ?',
         [user, pass])
       console.log(client)
       if ([client].length === 0) return null
@@ -49,7 +49,7 @@ export class ClientModel {
     } = input
 
     console.log(input)
-    const [client] = await run.query('SELECT email FROM clients WHERE email=?',
+    const [client] = await run.query('SELECT email FROM users WHERE email=?',
       [email]
     )
     console.log(client.length, client)
@@ -57,8 +57,8 @@ export class ClientModel {
     if (client.length > 0) return false
     else {
       try {
-        await run.query('INSERT INTO clients (firstname,lastname,sexo, email, pass, tel, calle, extN, intN,col,cp,city,state) VALUES (?, ?, ?, ?,?,?, ?, ?, ?,?,?,?,?)',
-          [name, lastname, sexo, email, password, tel, street, numi, numex, col, cp, municipio, state])
+        await run.query('INSERT INTO users (firstname,lastname,sexo, email, pass, tel, calle, extN, intN, col, cp, city, state, rol) VALUES (?, ?, ?, ?,?,?, ?, ?, ?,?,?,?,?,?)',
+          [name, lastname, sexo, email, password, tel, street, numi, numex, col, cp, municipio, state, 'cliente'])
       } catch (error) {
         throw new Error('Error creating client')
       }
@@ -82,17 +82,25 @@ export class ClientModel {
     } = input
 
     try {
-      await run.query('UPDATE clients SET firstname=?, lastname=?, email=?, pass=?, tel=?, calle=?, extN=?, intN=?, col=?, cp=?, city=?, state=? WHERE id = ?; ',
+      await run.query('UPDATE users SET firstname=?, lastname=?, email=?, pass=?, tel=?, calle=?, extN=?, intN=?, col=?, cp=?, city=?, state=? WHERE id = ?; ',
         [firstname, lastname, email, pass, tel, calle, extN, intN, col, cp, state, city, id]
       )
     } catch (error) {
       throw new Error('Error updating client')
     }
 
-    const [client] = await run.query('SELECT * from clients WHERE id=?',
+    const [client] = await run.query('SELECT * from users WHERE id=?',
       [id]
     )
 
     return client[0]
+  }
+
+  static async getDesechos ({ id }) {
+    const [desechos] = await run.query('SELECT CD.cliente_id, CD.desecho_id, CD.costo, CD.estado, CD.prog_date, D.name AS \'producto\' from cliente_desecho CD join desecho D ON CD.desecho_id = D.numSerie WHERE CD.cliente_id=?; ',
+      [id]
+    )
+    console.log(desechos)
+    return desechos
   }
 }
