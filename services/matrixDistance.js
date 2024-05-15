@@ -8,7 +8,7 @@ export const getDistance = async (address) => {
       params: {
         origins: ['Carretera al Ingenio Plan de Ayala Vista Hermosa, 79010 Cdad. Valles, S.L.P.'],
         destinations: [address],
-        key: 'AIzaSyDQz8J0BxeGNcIS6g1R5z7Lx6TKBbBXdBE',
+        key: '',
         mode: { TravelMode: 'driving' }
       },
       timeout: 1000 // milliseconds
