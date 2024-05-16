@@ -57,8 +57,8 @@ export class ClientModel {
     if (client.length > 0) return false
     else {
       try {
-        await run.query('INSERT INTO users (firstname,lastname,sexo, email, pass, tel, calle, extN, intN, col, cp, city, state, rol) VALUES (?, ?, ?, ?,?,?, ?, ?, ?,?,?,?,?,?)',
-          [name, lastname, sexo, email, password, tel, street, numi, numex, col, cp, municipio, state, 'cliente'])
+        await run.query('INSERT INTO users (firstname,lastname,email, pass, tel, calle, extN, intN, col, cp, city, state, rol) VALUES (?, ?, ?, ?,?,?, ?, ?, ?,?,?,?,?)',
+          [name, lastname, email, password, tel, street, numi, numex, col, cp, municipio, state, 'cliente'])
       } catch (error) {
         throw new Error('Error creating client')
       }
@@ -97,8 +97,9 @@ export class ClientModel {
   }
 
   static async getDesechos ({ id }) {
-    const [desechos] = await run.query('SELECT CD.cliente_id, CD.desecho_id, CD.costo, CD.estado, CD.prog_date, D.name AS \'producto\' from cliente_desecho CD join desecho D ON CD.desecho_id = D.numSerie WHERE CD.cliente_id=?; ',
-      [id]
+    const [desechos] = await run.query(`SELECT CD.cliente_id, CD.desecho_id, D.name AS 'producto',  CD.costo,  CD.estado, CD.prog_date   
+    from cliente_desecho CD JOIN desecho D ON CD.desecho_id = D.numSerie  WHERE CD.cliente_id=?; `,
+    [id]
     )
     console.log(desechos)
     return desechos

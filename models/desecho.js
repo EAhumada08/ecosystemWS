@@ -13,6 +13,14 @@ const config = {
 const run = await mysql.createConnection(config)
 
 export class DesechoModel {
+  static async getAll () {
+    const [desechos] = await run.query(`SELECT CD.cliente_id, CD.desecho_id,U.firstname AS 'nombre_cliente',U.lastname AS 'apellido_cliente', D.name AS 'producto', D.peso, CD.costo, U.calle, U.extN, U.intN,U.col,U.cp, U.city, U.state, CD.estado, CD.prog_date   
+    from cliente_desecho CD JOIN desecho D ON CD.desecho_id = D.numSerie JOIN users U ON CD.cliente_id = U.id WHERE CD.cliente_id= U.id;`)
+
+    console.log(desechos)
+    return desechos
+  }
+
   static async create ({ idClient, input }) {
     const {
       color,
