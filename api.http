@@ -12,7 +12,13 @@ Content-Type: application/json
     "user": "emaahmc08@gmail.com", 
     "pass": "12345"
 }
+####
+POST http://localhost:1234/clients/validateemail
+Content-Type: application/json
 
+{
+    "email": "ea8@gmail.com"
+}
 ####
 
 POST http://localhost:1234/clients
@@ -30,12 +36,12 @@ PATCH http://localhost:1234/clients/1
 Content-Type: application/json
 
 {
-    "firstname": "Emanuel",
-    "lastname": "Ahumada",
-    "email": "emaahmc08@gmail.com",
-    "pass": "134",
-    "calle": "Horacio Sanchez",
-    "extN": "22",
+    "firstname": "",
+    "lastname": "",
+    "email": "",
+    "pass": "",
+    "calle": "",
+    "extN": "",
     "intN": "12",
     "tel": "123214124",
     "col": "Solidaridad",

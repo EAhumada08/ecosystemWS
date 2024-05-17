@@ -31,20 +31,29 @@ export class ClientModel {
     }
   }
 
+  static async validateEmail ({ email }) {
+    if (email) {
+      const [client] = await run.query('SELECT id,firstname, email FROM users WHERE email = ?',
+        [email]
+      )
+      if ([client].length === 0) return null
+      return client[0]
+    }
+  }
+
   static async create ({ input }) {
     const {
-      name,
+      firstname,
       lastname,
-      sexo,
       email,
-      password,
+      pass,
       tel,
-      street,
-      numi,
-      numex,
+      calle,
+      intN,
+      extN,
       col,
       cp,
-      municipio,
+      city,
       state
     } = input
 
@@ -58,7 +67,7 @@ export class ClientModel {
     else {
       try {
         await run.query('INSERT INTO users (firstname,lastname,email, pass, tel, calle, extN, intN, col, cp, city, state, rol) VALUES (?, ?, ?, ?,?,?, ?, ?, ?,?,?,?,?)',
-          [name, lastname, email, password, tel, street, numi, numex, col, cp, municipio, state, 'cliente'])
+          [firstname, lastname, email, pass, tel, calle, extN, intN, col, cp, city, state, 'cliente'])
       } catch (error) {
         throw new Error('Error creating client')
       }
@@ -103,5 +112,17 @@ export class ClientModel {
     )
     console.log(desechos)
     return desechos
+  }
+
+  static async resetPassword ({ id, input }) {
+    const { pass } = input
+
+    try {
+      await run.query('UPDATE users SET pass=? WHERE id=?',
+        [pass, id]
+      )
+    } catch (error) {
+      throw new Error('Error reseting password')
+    }
   }
 }

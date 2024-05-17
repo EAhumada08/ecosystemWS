@@ -1,0 +1,14 @@
+POST http://localhost:1234/send_recovery_email
+Content-Type: application/json
+
+{
+
+}
+
+####
+PATCH http://localhost:1234/clients/resetpass/9
+Content-Type: application/json
+
+{
+    "pass":"5678"
+}

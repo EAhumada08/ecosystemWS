@@ -17,6 +17,13 @@ export class ClientController {
     res.status(404).json({ message: 'Correo o contrasena incorrectos' })
   }
 
+  static async validateEmail (req, res) {
+    const { email } = req.body
+    const user = await ClientModel.validateEmail({ email })
+    if (user) return res.json({ message: ' email existente', user })
+    res.status(404).json({ message: 'Correo no existente' })
+  }
+
   static async create (req, res) {
     const result = req.body
     const newClient = await ClientModel.create({ input: result })
@@ -31,6 +38,15 @@ export class ClientController {
     const updateClient = await ClientModel.update({ id, input: client })
 
     return res.json(updateClient)
+  }
+
+  static async resetPassword (req, res) {
+    const client = req.body
+    const { id } = req.params
+
+    await ClientModel.resetPassword({ id, input: client })
+
+    return res.json({ message: 'Contrasena cambiada' })
   }
 
   static async getDesechos (req, res) {
