@@ -6,7 +6,7 @@ export const getDistance = async (address) => {
   const data = await client
     .distancematrix({
       params: {
-        origins: ['Carretera al Ingenio Plan de Ayala Vista Hermosa, 79010 Cdad. Valles, S.L.P.'],
+        origins: ['16 de Septiembre 410, Vista Hermosa, 79010, Vista Hermosa, 79010 Cdad. Valles, S.L.P.'],
         destinations: [address],
         key: '',
         mode: { TravelMode: 'driving' }

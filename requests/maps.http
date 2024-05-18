@@ -1,0 +1,59 @@
+POST http://localhost:1234/
+Content-Type: application/json
+
+[
+    {
+        "cliente_id": 7,
+        "desecho_id": 123,
+        "nombre_cliente": "Emanuel",
+        "apellido_cliente": "Ahumadad",
+        "producto": "Laptop",
+        "peso": 1,
+        "costo": 66483.4,
+        "calle": "horacio",
+        "extN": "11",
+        "intN": "11",
+        "col": "solidaridad",
+        "cp": "79020",
+        "city": "Mexicali",
+        "state": "Baja California",
+        "estado": "En proceso",
+        "prog_date": null
+    },
+    {
+        "cliente_id": 8,
+        "desecho_id": 127,
+        "nombre_cliente": "Jose",
+        "apellido_cliente": "Gonzales",
+        "producto": "Ventilador",
+        "peso": 2,
+        "costo": 107.35,
+        "calle": "Uruguay",
+        "extN": "1",
+        "intN": "22",
+        "col": "Lazaro Cardenas",
+        "cp": "79021",
+        "city": "Ciudad Valles",
+        "state": "San Luis Potosí",
+        "estado": "En proceso",
+        "prog_date": null
+    },
+    {
+        "cliente_id": 9,
+        "desecho_id": 3456,
+        "nombre_cliente": "Emanuel",
+        "apellido_cliente": "Ahumada",
+        "producto": "Refirgerador",
+        "peso": 50,
+        "costo": 107.5,
+        "calle": "Horacio Sanchez Unzueta",
+        "extN": "1",
+        "intN": "22",
+        "col": "solidaridad",
+        "cp": "79020",
+        "city": "San Luis Potosí",
+        "state": "Ciudad Valles",
+        "estado": "En proceso",
+        "prog_date": null
+    }
+]
